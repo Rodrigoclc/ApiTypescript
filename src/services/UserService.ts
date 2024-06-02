@@ -27,4 +27,16 @@ export class UserService {
     }
     return db
   }
+
+  updateUser(user: IUser): IUser {
+    let updatedUser!: IUser;
+    for (const outdatedUser of db) {
+      if(user.id == outdatedUser.id) {   
+        outdatedUser.name = user.name;
+        outdatedUser.email = user. email;
+        updatedUser = outdatedUser;
+      }
+    }
+    return updatedUser;
+  }
 }

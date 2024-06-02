@@ -18,7 +18,7 @@ export class UserController {
         });
     }
 
-    getAllUsuarios(request: Request, response: Response) {
+    getAllUsers(request: Request, response: Response) {
         const users: IUser[] = userService.getAllUser();
         return response.status(200).json(users);
     }
@@ -27,5 +27,11 @@ export class UserController {
         const body: IUser = request.body;
         const remainingUsers: IUser[] = userService.deleteUser(body);
         return response.status(200).json({ sucesso: true, remainingUsers });
+    }
+
+    updateUser(request: Request, response: Response) {
+        const user: IUser = request.body;
+        const updatedUser: IUser = userService.updateUser(user);
+        return response.status(200).json({ sucesso: true, updatedUser });
     }
 }
